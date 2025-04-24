@@ -114,6 +114,7 @@
   <ItemGroup>
     <Compile Include="App_Code\Models\Employee.cs" />
     <Compile Include="App_Code\SqlQueryReader.cs" />
+    <Compile Include="App_Code\Utils\TreeUtil.cs" />
     <Compile Include="EmployeeService.svc.cs">
       <DependentUpon>EmployeeService.svc</DependentUpon>
     </Compile>

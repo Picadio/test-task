@@ -9,6 +9,7 @@ using System.Linq;
 using System.Net;
 using System.ServiceModel.Web;
 using EmployeeService.Models;
+using EmployeeService.Utils;
 using Newtonsoft.Json;
 
 namespace EmployeeService
@@ -51,7 +52,7 @@ namespace EmployeeService
                 throw new WebFaultException<string>($"Employee with ID {id} not found", HttpStatusCode.NotFound);
             }
             
-            return Employee.BuildTree(id, employees);
+            return TreeUtil.BuildTree(id, employees);
         }
         
         public void EnableEmployee(int id, int enable)
@@ -71,7 +72,6 @@ namespace EmployeeService
                     {
                         throw new WebFaultException<string>($"Employee with ID {id} not found", HttpStatusCode.NotFound);
                     }
-                    
                 }
             }
         }
