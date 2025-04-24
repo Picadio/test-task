@@ -1,0 +1,1 @@
+UPDATE Employee SET Enable = @enable WHERE ID = @id;
