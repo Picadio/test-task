@@ -2,7 +2,7 @@
 
 ## ⚙️ Prepare
 
-1. 📎 Attach the `Test.mdf` file to your local **SQL Server** instance using SQL Server Management Studio (SSMS):
+1. 📎 Attach the `EmployeeService\App_Data\Test.mdf` file to your local **SQL Server** instance using SQL Server Management Studio (SSMS):
     - Right-click on `Databases` → `Attach...`
     - Locate and select `Test.mdf`
     - Confirm and finish attaching

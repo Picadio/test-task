@@ -5,20 +5,20 @@ namespace EmployeeService.Utils
 {
     public static class TreeUtil
     {
-        public static INode BuildTree(int rootId, List<INode> employees)
+        public static INode BuildTree(object rootId, List<INode> nodes)
         {
             INode root = null;
-            var dict = employees.ToDictionary(e => e.GetId());
-            foreach (var employee in employees)
+            var dict = nodes.ToDictionary(e => e.GetId());
+            foreach (var node in nodes)
             {
-                if (employee.GetId().Equals(rootId) || employee.GetParentId() == null)
+                if (node.GetId().Equals(rootId) || node.GetParentId() == null)
                 {
-                    root = employee;
+                    root = node;
                 }
-                else if (dict.ContainsKey(employee.GetParentId()))
+                else if (dict.ContainsKey(node.GetParentId()))
                 {
-                    var manager = dict[employee.GetParentId()];
-                    manager.AddChild(employee);
+                    var parent = dict[node.GetParentId()];
+                    parent.AddChild(node);
                 }
             }
 
