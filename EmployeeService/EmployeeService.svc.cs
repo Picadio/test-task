@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Configuration;
-using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Net;
 using System.ServiceModel.Web;
 using EmployeeService.Models;
@@ -25,7 +25,7 @@ namespace EmployeeService
                 connection.Open();
                 using (var command = new SqlCommand(SqlQueryReader.Read("GetEmployeeRecursive.sql"), connection))
                 {
-                    command.Parameters.Add("@id", SqlDbType.Int).Value = id;
+                    command.Parameters.AddWithValue("@id", id);
                     using (var reader = command.ExecuteReader())
                     {
                         while (reader.Read())
@@ -46,8 +46,9 @@ namespace EmployeeService
             {
                 throw new WebFaultException<string>($"Employee with ID {id} not found", HttpStatusCode.NotFound);
             }
-            
-            return TreeUtil.BuildTree(id, employees);
+
+            var nodes = employees.Cast<INode>().ToList();
+            return (Employee)TreeUtil.BuildTree(id, nodes);
         }
         
         public void EnableEmployee(int id, int enable)

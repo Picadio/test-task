@@ -113,6 +113,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Code\Models\Employee.cs" />
+    <Compile Include="App_Code\Utils\INode.cs" />
     <Compile Include="App_Code\Utils\SqlQueryReader.cs" />
     <Compile Include="App_Code\Utils\TreeUtil.cs" />
     <Compile Include="EmployeeService.svc.cs">

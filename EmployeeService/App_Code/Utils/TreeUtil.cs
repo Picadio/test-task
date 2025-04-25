@@ -1,25 +1,24 @@
 using System.Collections.Generic;
 using System.Linq;
-using EmployeeService.Models;
 
 namespace EmployeeService.Utils
 {
     public static class TreeUtil
     {
-        public static Employee BuildTree(int rootId, List<Employee> employees)
+        public static INode BuildTree(int rootId, List<INode> employees)
         {
-            Employee root = null;
-            var dict = employees.ToDictionary(e => e.Id);
+            INode root = null;
+            var dict = employees.ToDictionary(e => e.GetId());
             foreach (var employee in employees)
             {
-                if (employee.Id == rootId || employee.ManagerId == null)
+                if (employee.GetId().Equals(rootId) || employee.GetParentId() == null)
                 {
                     root = employee;
                 }
-                else if (dict.ContainsKey((int)employee.ManagerId))
+                else if (dict.ContainsKey(employee.GetParentId()))
                 {
-                    var manager = dict[(int)employee.ManagerId];
-                    manager.Employees.Add(employee);
+                    var manager = dict[employee.GetParentId()];
+                    manager.AddChild(employee);
                 }
             }
 

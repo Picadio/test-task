@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using EmployeeService.Utils;
 
 namespace EmployeeService.Models
 {
     [DataContract]
-    public class Employee
+    public class Employee : INode
     {
         [DataMember]
         public int Id { get; set; }
@@ -20,6 +21,24 @@ namespace EmployeeService.Models
             Name = name;
             ManagerId = managerId;
             Employees = new List<Employee>();
+        }
+
+        public object GetId()
+        {
+            return Id;
+        }
+
+        public object GetParentId()
+        {
+            return ManagerId;
+        }
+
+        public void AddChild(INode node)
+        {
+            if (node.GetType() == typeof(Employee))
+            {
+                Employees.Add((Employee)node);
+            }
         }
     }
 }
