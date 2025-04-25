@@ -4,7 +4,7 @@ using EmployeeService.Models;
 
 namespace EmployeeService.Utils
 {
-    public class TreeUtil
+    public static class TreeUtil
     {
         public static Employee BuildTree(int rootId, List<Employee> employees)
         {

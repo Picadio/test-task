@@ -1,9 +1,9 @@
 using System;
 using System.IO;
 
-namespace EmployeeService
+namespace EmployeeService.Utils
 {
-    public class SqlQueryReader
+    public static class SqlQueryReader
     {
         private static readonly string FileLocation = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, 
             "App_Data", "SqlQueries");

@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
-using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Data.SqlClient;
-using System.Diagnostics;
-using System.Linq;
 using System.Net;
 using System.ServiceModel.Web;
 using EmployeeService.Models;
 using EmployeeService.Utils;
-using Newtonsoft.Json;
 
 namespace EmployeeService
 {
